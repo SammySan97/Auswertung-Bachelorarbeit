@@ -1,0 +1,1274 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Überarbeitet Bachelorarbeit},
+  pdfauthor={Sammy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Überarbeitet Bachelorarbeit}
+\author{Sammy}
+\date{2025-06-04}
+
+\begin{document}
+\maketitle
+
+\section{1. Daten vorbereiten und
+bereinigen}\label{daten-vorbereiten-und-bereinigen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Datei einlesen und umbenennen }
+
+\FunctionTok{library}\NormalTok{(dplyr) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attache Paket: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## Die folgenden Objekte sind maskiert von 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## Die folgenden Objekte sind maskiert von 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyselect)}
+\FunctionTok{library}\NormalTok{ (psych)}
+\FunctionTok{library}\NormalTok{ (readxl)}
+
+\NormalTok{data\_raw }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data\_ki{-}basierte\_dienstleistungen\_2025{-}06{-}01\_20{-}14.xlsx"}\NormalTok{)}
+
+\CommentTok{\# {-}{-}{-} Schritt 1: Unnötige Variablen entfernen {-}{-}{-}}
+
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}}\NormalTok{ data\_raw }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(SERIAL, REF, QUESTNNR, MODE, STARTED, STATUS, FINISHED, Q\_VIEWER, LASTPAGE, MAXPAGE, MISSING, MISSREL, TIME\_RSI))}
+
+\CommentTok{\# {-}{-}{-} Schritt 2: Erste Zeile (Fragetext) entfernen {-}{-}{-}}
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, ]}
+
+\CommentTok{\# {-}{-}{-} Schritt 3: {-}1 und {-}9 als NA markieren {-}{-}{-}}
+\NormalTok{data\_clean[data\_clean }\SpecialCharTok{==} \StringTok{"{-}9"} \SpecialCharTok{|}\NormalTok{ data\_clean }\SpecialCharTok{==} \StringTok{"{-}1"}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+
+\CommentTok{\# {-}{-}{-} Schritt 4: Alle Variablen in numerisch umwandeln {-}{-}{-}}
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), }\SpecialCharTok{\textasciitilde{}}\FunctionTok{as.numeric}\NormalTok{(.)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: There were 3 warnings in `mutate()`.
+## The first warning was:
+## i In argument: `across(everything(), ~as.numeric(.))`.
+## Caused by warning:
+## ! NAs durch Umwandlung erzeugt
+## i Run `dplyr::last_dplyr_warnings()` to see the 2 remaining warnings.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# {-}{-}{-} Schritt 5: Minderjährige entfernen {-}{-}{-}}
+\FunctionTok{library}\NormalTok{(conflicted)}
+\NormalTok{conflicted}\SpecialCharTok{::}\FunctionTok{conflicts\_prefer}\NormalTok{(dplyr}\SpecialCharTok{::}\NormalTok{filter)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [conflicted] Will prefer dplyr::filter over any other package.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(data\_clean, SD02\_01 }\SpecialCharTok{\textgreater{}=} \DecValTok{18}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{2. Skalenmittelwerte
+berechnen}\label{skalenmittelwerte-berechnen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Funktion zur Berechnung von Skalenmittelwerten}
+\NormalTok{get\_mean }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(vars) }\FunctionTok{rowMeans}\NormalTok{(data\_clean[, vars], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Skalen erstellen}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{anstrengungserwartung       }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"AE01\_01"}\NormalTok{, }\StringTok{"AE01\_02"}\NormalTok{, }\StringTok{"AE01\_03"}\NormalTok{, }\StringTok{"AE01\_04"}\NormalTok{))}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{erleichternde\_bedingungen   }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"EB01\_01"}\NormalTok{, }\StringTok{"EB01\_02"}\NormalTok{, }\StringTok{"EB01\_03"}\NormalTok{, }\StringTok{"EB01\_04"}\NormalTok{))}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{gewohnheit                  }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"G001\_01"}\NormalTok{, }\StringTok{"G001\_02"}\NormalTok{, }\StringTok{"G001\_03"}\NormalTok{))}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{hedonische\_motivation       }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"HM01\_01"}\NormalTok{, }\StringTok{"HM01\_02"}\NormalTok{, }\StringTok{"HM01\_03"}\NormalTok{))}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{leistungserwartung          }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"LE01\_01"}\NormalTok{, }\StringTok{"LE01\_02"}\NormalTok{, }\StringTok{"LE01\_03"}\NormalTok{, }\StringTok{"LE01\_04"}\NormalTok{))}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{sozialer\_einfluss           }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"SE01\_01"}\NormalTok{, }\StringTok{"SE01\_02"}\NormalTok{, }\StringTok{"SE01\_03"}\NormalTok{))}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{verhaltensabsicht           }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"VA01\_01"}\NormalTok{, }\StringTok{"VA01\_02"}\NormalTok{, }\StringTok{"VA01\_03"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Nutzen korrekt berechnen}
+\CommentTok{\# {-}9 bei Ja/Nein{-}Items als NA markieren}
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(N002\_01, N002\_02, N002\_03), }\SpecialCharTok{\textasciitilde{}}\FunctionTok{na\_if}\NormalTok{(., }\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{)))}
+
+\CommentTok{\# Ja/Nein (1=nein, 2=ja) in 0/1 umkodieren}
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(N002\_01, N002\_02, N002\_03), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    . }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{\textasciitilde{}} \DecValTok{1}\NormalTok{,}
+\NormalTok{    . }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{\textasciitilde{}} \DecValTok{0}\NormalTok{,}
+    \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}} \ConstantTok{NA\_real\_}
+\NormalTok{  )))}
+
+\CommentTok{\# Nutzungshäufigkeit (1{-}5)}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{N\_freq\_mean }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"N001\_01"}\NormalTok{, }\StringTok{"N001\_02"}\NormalTok{, }\StringTok{"N001\_03"}\NormalTok{))}
+
+\CommentTok{\# Anteil der genutzten Kanäle}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{N\_used\_prop }\OtherTok{\textless{}{-}} \FunctionTok{get\_mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"N002\_01"}\NormalTok{, }\StringTok{"N002\_02"}\NormalTok{, }\StringTok{"N002\_03"}\NormalTok{))}
+
+\CommentTok{\# Gesamtnutzung nur wenn etwas genutzt wurde}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{Nutzung\_final }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(data\_clean}\SpecialCharTok{$}\NormalTok{N\_used\_prop }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, data\_clean}\SpecialCharTok{$}\NormalTok{N\_freq\_mean, }\ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{3. Interkorrelationen}\label{interkorrelationen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cor\_matrix }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(AE01\_01}\SpecialCharTok{:}\NormalTok{AE01\_04, EB01\_01}\SpecialCharTok{:}\NormalTok{EB01\_04, LE01\_01}\SpecialCharTok{:}\NormalTok{LE01\_04,}
+\NormalTok{         HM01\_01}\SpecialCharTok{:}\NormalTok{HM01\_03, SE01\_01}\SpecialCharTok{:}\NormalTok{SE01\_03, VA01\_01}\SpecialCharTok{:}\NormalTok{VA01\_03,}
+\NormalTok{         G001\_01}\SpecialCharTok{:}\NormalTok{G001\_03, N001\_01}\SpecialCharTok{:}\NormalTok{N001\_03, N002\_01}\SpecialCharTok{:}\NormalTok{N002\_03) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{cor}\NormalTok{(}\AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(}\FunctionTok{round}\NormalTok{(cor\_matrix, }\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         AE01_01 AE01_02 AE01_03 AE01_04 EB01_01 EB01_02 EB01_03 EB01_04 LE01_01
+## AE01_01  1.0000  0.6232  0.4966  0.5003  0.3786  0.5813  0.2319  0.1931  0.3657
+## AE01_02  0.6232  1.0000  0.5528  0.4272  0.2634  0.3097  0.2699  0.2129  0.5133
+## AE01_03  0.4966  0.5528  1.0000  0.4132  0.0910  0.2871  0.1962  0.1352  0.3803
+## AE01_04  0.5003  0.4272  0.4132  1.0000  0.2678  0.4547  0.2055  0.1976  0.2783
+## EB01_01  0.3786  0.2634  0.0910  0.2678  1.0000  0.4991  0.3006  0.0293  0.1821
+## EB01_02  0.5813  0.3097  0.2871  0.4547  0.4991  1.0000  0.3739  0.2923  0.1554
+## EB01_03  0.2319  0.2699  0.1962  0.2055  0.3006  0.3739  1.0000  0.4496  0.1488
+## EB01_04  0.1931  0.2129  0.1352  0.1976  0.0293  0.2923  0.4496  1.0000  0.1167
+## LE01_01  0.3657  0.5133  0.3803  0.2783  0.1821  0.1554  0.1488  0.1167  1.0000
+## LE01_02  0.3043  0.4314  0.3494  0.2754  0.0747  0.0831  0.1131  0.1275  0.7028
+## LE01_03  0.3140  0.4519  0.3984  0.2404  0.0963  0.0722  0.1503  0.0367  0.5907
+## LE01_04  0.2118  0.4041  0.3670  0.2808  0.0175  0.0587  0.1395  0.0954  0.6133
+## HM01_01  0.2770  0.4693  0.3662  0.2543  0.1331  0.0751  0.1130  0.1061  0.6369
+## HM01_02  0.2747  0.4769  0.4144  0.2503  0.1036  0.0620  0.1545  0.1448  0.7020
+## HM01_03  0.1930  0.3074  0.2359  0.2962 -0.0641  0.0178  0.1754  0.2655  0.4954
+## SE01_01  0.2527  0.3073  0.2964  0.1739 -0.0758  0.0249  0.1514  0.1778  0.4421
+## SE01_02  0.3430  0.3303  0.3397  0.2184  0.0251  0.0599  0.1418  0.1737  0.3774
+## SE01_03  0.2946  0.3280  0.3394  0.1943  0.0924  0.0264  0.0866  0.1162  0.4262
+## VA01_01  0.3352  0.3706  0.4399  0.3663  0.1036  0.1854  0.2496  0.2270  0.5962
+## VA01_02  0.3023  0.4491  0.3703  0.3228  0.1266  0.2257  0.3229  0.2464  0.6192
+## VA01_03  0.1707  0.2321  0.3380  0.3705 -0.0655  0.1201  0.2550  0.2929  0.3548
+## G001_01  0.2392  0.3189  0.4052  0.3026 -0.0315  0.1516  0.1647  0.2396  0.4597
+## G001_02  0.2068  0.2526  0.3616  0.2914  0.0576  0.1735  0.2566  0.2762  0.4221
+## G001_03  0.1956  0.2906  0.3768  0.2500 -0.0751  0.1619  0.1931  0.2938  0.4454
+## N001_01  0.2859  0.2066  0.0817  0.3256  0.0538  0.2778  0.0709  0.1495  0.3825
+## N001_02  0.2221  0.3364  0.1823  0.2422  0.0899  0.2150  0.2747  0.2330  0.3414
+## N001_03  0.1042  0.0023  0.0553  0.0898 -0.1039  0.0486  0.1112  0.2240  0.1206
+## N002_01  0.2395 -0.0053 -0.0334  0.0580  0.1742  0.2290  0.0359  0.1214  0.0564
+## N002_02  0.1996  0.1643  0.0074  0.0310  0.0559  0.1546  0.1967  0.1633  0.1002
+## N002_03  0.1353  0.0949 -0.0554 -0.0266  0.0613  0.2203 -0.0358  0.1945  0.0020
+##         LE01_02 LE01_03 LE01_04 HM01_01 HM01_02 HM01_03 SE01_01 SE01_02 SE01_03
+## AE01_01  0.3043  0.3140  0.2118  0.2770  0.2747  0.1930  0.2527  0.3430  0.2946
+## AE01_02  0.4314  0.4519  0.4041  0.4693  0.4769  0.3074  0.3073  0.3303  0.3280
+## AE01_03  0.3494  0.3984  0.3670  0.3662  0.4144  0.2359  0.2964  0.3397  0.3394
+## AE01_04  0.2754  0.2404  0.2808  0.2543  0.2503  0.2962  0.1739  0.2184  0.1943
+## EB01_01  0.0747  0.0963  0.0175  0.1331  0.1036 -0.0641 -0.0758  0.0251  0.0924
+## EB01_02  0.0831  0.0722  0.0587  0.0751  0.0620  0.0178  0.0249  0.0599  0.0264
+## EB01_03  0.1131  0.1503  0.1395  0.1130  0.1545  0.1754  0.1514  0.1418  0.0866
+## EB01_04  0.1275  0.0367  0.0954  0.1061  0.1448  0.2655  0.1778  0.1737  0.1162
+## LE01_01  0.7028  0.5907  0.6133  0.6369  0.7020  0.4954  0.4421  0.3774  0.4262
+## LE01_02  1.0000  0.6965  0.7429  0.7272  0.6673  0.5596  0.4820  0.3695  0.4802
+## LE01_03  0.6965  1.0000  0.7223  0.6274  0.7276  0.4909  0.4190  0.3301  0.3940
+## LE01_04  0.7429  0.7223  1.0000  0.5873  0.6416  0.4570  0.4233  0.3763  0.4484
+## HM01_01  0.7272  0.6274  0.5873  1.0000  0.8002  0.6635  0.4571  0.3516  0.5147
+## HM01_02  0.6673  0.7276  0.6416  0.8002  1.0000  0.5838  0.5410  0.3770  0.5156
+## HM01_03  0.5596  0.4909  0.4570  0.6635  0.5838  1.0000  0.3770  0.2970  0.4079
+## SE01_01  0.4820  0.4190  0.4233  0.4571  0.5410  0.3770  1.0000  0.7006  0.6981
+## SE01_02  0.3695  0.3301  0.3763  0.3516  0.3770  0.2970  0.7006  1.0000  0.6814
+## SE01_03  0.4802  0.3940  0.4484  0.5147  0.5156  0.4079  0.6981  0.6814  1.0000
+## VA01_01  0.5237  0.4524  0.5544  0.5876  0.6052  0.4613  0.4223  0.4296  0.4546
+## VA01_02  0.4978  0.4026  0.5355  0.5678  0.6137  0.4200  0.4346  0.4344  0.4133
+## VA01_03  0.4380  0.4043  0.5520  0.4931  0.5323  0.4711  0.4307  0.4611  0.4648
+## G001_01  0.5134  0.3908  0.5072  0.4397  0.4662  0.4067  0.4537  0.4390  0.4400
+## G001_02  0.3591  0.2891  0.3832  0.3481  0.4165  0.3684  0.3269  0.2944  0.3542
+## G001_03  0.4855  0.3678  0.5243  0.4113  0.4658  0.4254  0.4651  0.3996  0.4578
+## N001_01  0.3378  0.2791  0.3087  0.2385  0.2502  0.2090  0.3639  0.3272  0.2543
+## N001_02  0.2063  0.1803  0.2784  0.2539  0.2491  0.3591  0.2011  0.2445  0.1256
+## N001_03  0.0430 -0.0418  0.0786 -0.0239  0.0104  0.0444  0.1866  0.2396  0.1672
+## N002_01  0.0340  0.0684 -0.1121  0.0080 -0.0080 -0.0458  0.0176 -0.0435  0.0332
+## N002_02 -0.0125 -0.0803 -0.0209 -0.0173  0.0150  0.0755  0.0719  0.0843  0.0660
+## N002_03 -0.0078 -0.2322 -0.1034 -0.0701 -0.2104 -0.0795 -0.0630 -0.1022  0.0223
+##         VA01_01 VA01_02 VA01_03 G001_01 G001_02 G001_03 N001_01 N001_02 N001_03
+## AE01_01  0.3352  0.3023  0.1707  0.2392  0.2068  0.1956  0.2859  0.2221  0.1042
+## AE01_02  0.3706  0.4491  0.2321  0.3189  0.2526  0.2906  0.2066  0.3364  0.0023
+## AE01_03  0.4399  0.3703  0.3380  0.4052  0.3616  0.3768  0.0817  0.1823  0.0553
+## AE01_04  0.3663  0.3228  0.3705  0.3026  0.2914  0.2500  0.3256  0.2422  0.0898
+## EB01_01  0.1036  0.1266 -0.0655 -0.0315  0.0576 -0.0751  0.0538  0.0899 -0.1039
+## EB01_02  0.1854  0.2257  0.1201  0.1516  0.1735  0.1619  0.2778  0.2150  0.0486
+## EB01_03  0.2496  0.3229  0.2550  0.1647  0.2566  0.1931  0.0709  0.2747  0.1112
+## EB01_04  0.2270  0.2464  0.2929  0.2396  0.2762  0.2938  0.1495  0.2330  0.2240
+## LE01_01  0.5962  0.6192  0.3548  0.4597  0.4221  0.4454  0.3825  0.3414  0.1206
+## LE01_02  0.5237  0.4978  0.4380  0.5134  0.3591  0.4855  0.3378  0.2063  0.0430
+## LE01_03  0.4524  0.4026  0.4043  0.3908  0.2891  0.3678  0.2791  0.1803 -0.0418
+## LE01_04  0.5544  0.5355  0.5520  0.5072  0.3832  0.5243  0.3087  0.2784  0.0786
+## HM01_01  0.5876  0.5678  0.4931  0.4397  0.3481  0.4113  0.2385  0.2539 -0.0239
+## HM01_02  0.6052  0.6137  0.5323  0.4662  0.4165  0.4658  0.2502  0.2491  0.0104
+## HM01_03  0.4613  0.4200  0.4711  0.4067  0.3684  0.4254  0.2090  0.3591  0.0444
+## SE01_01  0.4223  0.4346  0.4307  0.4537  0.3269  0.4651  0.3639  0.2011  0.1866
+## SE01_02  0.4296  0.4344  0.4611  0.4390  0.2944  0.3996  0.3272  0.2445  0.2396
+## SE01_03  0.4546  0.4133  0.4648  0.4400  0.3542  0.4578  0.2543  0.1256  0.1672
+## VA01_01  1.0000  0.7990  0.7229  0.6498  0.5537  0.6137  0.4265  0.4381  0.2761
+## VA01_02  0.7990  1.0000  0.7314  0.6208  0.5779  0.6168  0.4328  0.4849  0.3104
+## VA01_03  0.7229  0.7314  1.0000  0.6877  0.6272  0.7013  0.3174  0.3177  0.3167
+## G001_01  0.6498  0.6208  0.6877  1.0000  0.6874  0.7961  0.3963  0.3187  0.1824
+## G001_02  0.5537  0.5779  0.6272  0.6874  1.0000  0.7327  0.3654  0.3052  0.4103
+## G001_03  0.6137  0.6168  0.7013  0.7961  0.7327  1.0000  0.4379  0.3414  0.3275
+## N001_01  0.4265  0.4328  0.3174  0.3963  0.3654  0.4379  1.0000  0.2141  0.3757
+## N001_02  0.4381  0.4849  0.3177  0.3187  0.3052  0.3414  0.2141  1.0000  0.1993
+## N001_03  0.2761  0.3104  0.3167  0.1824  0.4103  0.3275  0.3757  0.1993  1.0000
+## N002_01  0.1033  0.1560 -0.0214  0.0247  0.0495 -0.0070  0.2925  0.0093  0.2394
+## N002_02  0.0981  0.2085  0.0035  0.0254  0.0352  0.0369  0.2557  0.1799  0.3787
+## N002_03 -0.1062 -0.0182 -0.1273 -0.0676 -0.0009  0.0285  0.1213  0.1205  0.2095
+##         N002_01 N002_02 N002_03
+## AE01_01  0.2395  0.1996  0.1353
+## AE01_02 -0.0053  0.1643  0.0949
+## AE01_03 -0.0334  0.0074 -0.0554
+## AE01_04  0.0580  0.0310 -0.0266
+## EB01_01  0.1742  0.0559  0.0613
+## EB01_02  0.2290  0.1546  0.2203
+## EB01_03  0.0359  0.1967 -0.0358
+## EB01_04  0.1214  0.1633  0.1945
+## LE01_01  0.0564  0.1002  0.0020
+## LE01_02  0.0340 -0.0125 -0.0078
+## LE01_03  0.0684 -0.0803 -0.2322
+## LE01_04 -0.1121 -0.0209 -0.1034
+## HM01_01  0.0080 -0.0173 -0.0701
+## HM01_02 -0.0080  0.0150 -0.2104
+## HM01_03 -0.0458  0.0755 -0.0795
+## SE01_01  0.0176  0.0719 -0.0630
+## SE01_02 -0.0435  0.0843 -0.1022
+## SE01_03  0.0332  0.0660  0.0223
+## VA01_01  0.1033  0.0981 -0.1062
+## VA01_02  0.1560  0.2085 -0.0182
+## VA01_03 -0.0214  0.0035 -0.1273
+## G001_01  0.0247  0.0254 -0.0676
+## G001_02  0.0495  0.0352 -0.0009
+## G001_03 -0.0070  0.0369  0.0285
+## N001_01  0.2925  0.2557  0.1213
+## N001_02  0.0093  0.1799  0.1205
+## N001_03  0.2394  0.3787  0.2095
+## N002_01  1.0000  0.4429  0.2071
+## N002_02  0.4429  1.0000  0.2071
+## N002_03  0.2071  0.2071  1.0000
+\end{verbatim}
+
+\section{4. Reliabilitätsanalysen}\label{reliabilituxe4tsanalysen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych)}
+\FunctionTok{library}\NormalTok{(conflicted)}
+\FunctionTok{conflicts\_prefer}\NormalTok{(psych}\SpecialCharTok{::}\NormalTok{alpha)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [conflicted] Will prefer psych::alpha over any other package.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Hilfsfunktion}
+\NormalTok{reliability }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(items) }\FunctionTok{alpha}\NormalTok{(}\FunctionTok{select}\NormalTok{(data\_clean, }\FunctionTok{all\_of}\NormalTok{(items)))}
+
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"VA01\_01"}\NormalTok{, }\StringTok{"VA01\_02"}\NormalTok{, }\StringTok{"VA01\_03"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd median_r
+##        0.9       0.9    0.86      0.75 9.1 0.016  3.1 1.1     0.73
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.86   0.9  0.93
+## Duhachek  0.87   0.9  0.93
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+## VA01_01      0.84      0.84    0.73      0.73 5.4    0.029    NA  0.73
+## VA01_02      0.84      0.84    0.72      0.72 5.2    0.030    NA  0.72
+## VA01_03      0.89      0.89    0.80      0.80 7.9    0.021    NA  0.80
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean  sd
+## VA01_01 118  0.92  0.92  0.87   0.82  3.4 1.2
+## VA01_02 118  0.92  0.92  0.87   0.82  3.1 1.2
+## VA01_03 118  0.90  0.90  0.80   0.77  2.8 1.3
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## VA01_01 0.08 0.14 0.24 0.37 0.17    0
+## VA01_02 0.14 0.19 0.24 0.31 0.12    0
+## VA01_03 0.18 0.22 0.29 0.20 0.11    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"AE01\_01"}\NormalTok{, }\StringTok{"AE01\_02"}\NormalTok{, }\StringTok{"AE01\_03"}\NormalTok{, }\StringTok{"AE01\_04"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+##        0.8       0.8    0.76       0.5   4 0.031  3.6 0.76      0.5
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.73   0.8  0.85
+## Duhachek  0.74   0.8  0.86
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+## AE01_01      0.71      0.72    0.64      0.46 2.6    0.046 0.0059  0.43
+## AE01_02      0.72      0.73    0.64      0.47 2.7    0.044 0.0024  0.50
+## AE01_03      0.76      0.76    0.69      0.52 3.2    0.039 0.0098  0.50
+## AE01_04      0.79      0.79    0.72      0.56 3.8    0.033 0.0040  0.55
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean   sd
+## AE01_01 118  0.83  0.83  0.76   0.67  3.8 1.00
+## AE01_02 118  0.81  0.82  0.75   0.66  3.6 0.91
+## AE01_03 118  0.76  0.78  0.66   0.59  3.8 0.88
+## AE01_04 118  0.76  0.74  0.59   0.53  3.3 1.08
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## AE01_01 0.03 0.08 0.19 0.44 0.26    0
+## AE01_02 0.03 0.08 0.28 0.48 0.13    0
+## AE01_03 0.03 0.04 0.25 0.50 0.18    0
+## AE01_04 0.06 0.18 0.34 0.30 0.13    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"EB01\_01"}\NormalTok{, }\StringTok{"EB01\_02"}\NormalTok{, }\StringTok{"EB01\_03"}\NormalTok{, }\StringTok{"EB01\_04"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+##       0.65      0.66    0.64      0.32 1.9 0.052    4 0.72     0.34
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.54  0.65  0.74
+## Duhachek  0.55  0.65  0.75
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+## EB01_01      0.64      0.64    0.55      0.37 1.8    0.056 0.0062  0.37
+## EB01_02      0.53      0.51    0.47      0.26 1.1    0.071 0.0454  0.30
+## EB01_03      0.50      0.53    0.50      0.27 1.1    0.080 0.0554  0.29
+## EB01_04      0.64      0.66    0.57      0.39 1.9    0.057 0.0101  0.37
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean   sd
+## EB01_01 118  0.58  0.65  0.50   0.34  4.6 0.80
+## EB01_02 118  0.74  0.77  0.67   0.52  4.2 0.96
+## EB01_03 118  0.78  0.76  0.63   0.54  3.8 1.11
+## EB01_04 118  0.69  0.63  0.46   0.36  3.5 1.18
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## EB01_01 0.03 0.01 0.03 0.19 0.75    0
+## EB01_02 0.02 0.04 0.16 0.32 0.46    0
+## EB01_03 0.03 0.10 0.22 0.31 0.33    0
+## EB01_04 0.08 0.13 0.25 0.34 0.21    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"HM01\_01"}\NormalTok{, }\StringTok{"HM01\_02"}\NormalTok{, }\StringTok{"HM01\_03"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean sd median_r
+##       0.86      0.87    0.83      0.68 6.4 0.022  2.9  1     0.66
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.82  0.86  0.90
+## Duhachek  0.82  0.86  0.91
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+## HM01_01      0.74      0.74    0.58      0.58 2.8    0.048    NA  0.58
+## HM01_02      0.80      0.80    0.66      0.66 3.9    0.037    NA  0.66
+## HM01_03      0.89      0.89    0.80      0.80 8.0    0.020    NA  0.80
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean  sd
+## HM01_01 118  0.92  0.92  0.89   0.82  3.0 1.1
+## HM01_02 118  0.89  0.90  0.84   0.76  3.1 1.2
+## HM01_03 118  0.85  0.84  0.70   0.66  2.8 1.2
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## HM01_01 0.11 0.19 0.35 0.25 0.09    0
+## HM01_02 0.10 0.22 0.31 0.25 0.11    0
+## HM01_03 0.14 0.32 0.22 0.25 0.07    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"LE01\_01"}\NormalTok{, }\StringTok{"LE01\_02"}\NormalTok{, }\StringTok{"LE01\_03"}\NormalTok{, }\StringTok{"LE01\_04"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean sd median_r
+##       0.89      0.89    0.87      0.68 8.4 0.016  3.1  1      0.7
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.86  0.89  0.92
+## Duhachek  0.86  0.89  0.93
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se   var.r med.r
+## LE01_01      0.89      0.89    0.84      0.72 7.7    0.018 0.00054  0.72
+## LE01_02      0.84      0.84    0.79      0.64 5.4    0.025 0.00495  0.61
+## LE01_03      0.87      0.87    0.82      0.69 6.6    0.021 0.00441  0.70
+## LE01_04      0.86      0.86    0.80      0.66 5.9    0.023 0.00397  0.70
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean  sd
+## LE01_01 118  0.83  0.83  0.75   0.70  3.4 1.1
+## LE01_02 118  0.90  0.90  0.87   0.82  3.0 1.2
+## LE01_03 118  0.86  0.86  0.80   0.76  3.1 1.1
+## LE01_04 118  0.89  0.88  0.84   0.79  3.0 1.2
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## LE01_01 0.09 0.06 0.34 0.36 0.14    0
+## LE01_02 0.09 0.31 0.25 0.25 0.10    0
+## LE01_03 0.07 0.25 0.27 0.28 0.13    0
+## LE01_04 0.12 0.24 0.31 0.20 0.14    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"SE01\_01"}\NormalTok{, }\StringTok{"SE01\_02"}\NormalTok{, }\StringTok{"SE01\_03"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+##       0.87      0.87    0.82      0.69 6.8 0.021  2.9 0.96      0.7
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.82  0.87  0.91
+## Duhachek  0.83  0.87  0.91
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+## SE01_01      0.81      0.81    0.68      0.68 4.3    0.035    NA  0.68
+## SE01_02      0.82      0.82    0.70      0.70 4.6    0.033    NA  0.70
+## SE01_03      0.82      0.82    0.70      0.70 4.7    0.032    NA  0.70
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean  sd
+## SE01_01 118  0.89  0.90  0.82   0.76  2.9 1.0
+## SE01_02 118  0.89  0.89  0.80   0.75  3.1 1.0
+## SE01_03 118  0.89  0.89  0.80   0.75  2.7 1.1
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## SE01_01 0.11 0.22 0.38 0.24 0.05    0
+## SE01_02 0.07 0.23 0.31 0.33 0.07    0
+## SE01_03 0.17 0.25 0.32 0.22 0.04    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"G001\_01"}\NormalTok{, }\StringTok{"G001\_02"}\NormalTok{, }\StringTok{"G001\_03"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd median_r
+##       0.89      0.89    0.86      0.74 8.5 0.017  2.9 1.1     0.73
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.86  0.89  0.92
+## Duhachek  0.86  0.89  0.93
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+## G001_01      0.85      0.85    0.73      0.73 5.5    0.028    NA  0.73
+## G001_02      0.89      0.89    0.80      0.80 7.8    0.021    NA  0.80
+## G001_03      0.81      0.81    0.69      0.69 4.4    0.034    NA  0.69
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean  sd
+## G001_01 118  0.91  0.91  0.85   0.80  3.0 1.2
+## G001_02 118  0.89  0.89  0.79   0.75  2.8 1.2
+## G001_03 118  0.93  0.93  0.88   0.83  3.0 1.3
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## G001_01 0.15 0.20 0.20 0.36 0.08    0
+## G001_02 0.14 0.35 0.19 0.22 0.10    0
+## G001_03 0.18 0.19 0.21 0.31 0.11    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Nutzung: N001 = Skala, N002 = Ja/Nein → getrennt analysieren}
+\FunctionTok{reliability}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"N001\_01"}\NormalTok{, }\StringTok{"N001\_02"}\NormalTok{, }\StringTok{"N001\_03"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Reliability analysis   
+## Call: alpha(x = select(data_clean, all_of(items)))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+##       0.51      0.52    0.43      0.26 1.1 0.079  2.8 0.85     0.21
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.33  0.51  0.64
+## Duhachek  0.35  0.51  0.66
+## 
+##  Reliability if an item is dropped:
+##         raw_alpha std.alpha G6(smc) average_r  S/N alpha se var.r med.r
+## N001_01      0.33      0.33    0.20      0.20 0.50    0.122    NA  0.20
+## N001_02      0.55      0.55    0.38      0.38 1.20    0.084    NA  0.38
+## N001_03      0.35      0.35    0.21      0.21 0.54    0.118    NA  0.21
+## 
+##  Item statistics 
+##           n raw.r std.r r.cor r.drop mean  sd
+## N001_01 118  0.71  0.74  0.54   0.37  2.8 1.1
+## N001_02 118  0.70  0.66  0.34   0.25  3.0 1.3
+## N001_03 118  0.72  0.74  0.52   0.36  2.6 1.2
+## 
+## Non missing response frequency for each item
+##            1    2    3    4    5 miss
+## N001_01 0.11 0.30 0.31 0.21 0.07    0
+## N001_02 0.13 0.35 0.12 0.25 0.15    0
+## N001_03 0.18 0.38 0.22 0.14 0.08    0
+\end{verbatim}
+
+\section{5. Deskriptive Statistiken \&
+Korrelationen}\label{deskriptive-statistiken-korrelationen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Skalenmittelwerte}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{VA\_mean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{verhaltensabsicht}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{AE\_mean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{anstrengungserwartung}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{EB\_mean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{erleichternde\_bedingungen}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{LE\_mean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{leistungserwartung}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{HM\_mean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{hedonische\_motivation}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{SE\_mean }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{sozialer\_einfluss}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{G\_mean  }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean}\SpecialCharTok{$}\NormalTok{gewohnheit}
+
+\NormalTok{skalen }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\FunctionTok{ends\_with}\NormalTok{(}\StringTok{"\_mean"}\NormalTok{))}
+
+\CommentTok{\# Deskriptive Statistik}
+\FunctionTok{describe}\NormalTok{(skalen)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             vars   n mean   sd median trimmed  mad  min max range  skew
+## N_freq_mean    1 118 2.78 0.85   2.83    2.78 0.74 1.00   5  4.00  0.10
+## VA_mean        2 118 3.12 1.11   3.00    3.15 1.24 1.00   5  4.00 -0.28
+## AE_mean        3 118 3.61 0.76   3.75    3.65 0.74 1.00   5  4.00 -0.63
+## EB_mean        4 118 4.02 0.72   4.00    4.06 0.74 2.25   5  2.75 -0.39
+## LE_mean        5 118 3.13 1.01   3.00    3.15 1.11 1.00   5  4.00 -0.14
+## HM_mean        6 118 2.95 1.02   3.00    2.97 0.99 1.00   5  4.00 -0.12
+## SE_mean        7 118 2.91 0.96   3.00    2.93 0.99 1.00   5  4.00 -0.10
+## G_mean         8 118 2.92 1.14   3.00    2.93 1.48 1.00   5  4.00 -0.10
+##             kurtosis   se
+## N_freq_mean    -0.69 0.08
+## VA_mean        -0.73 0.10
+## AE_mean         0.49 0.07
+## EB_mean        -0.79 0.07
+## LE_mean        -0.47 0.09
+## HM_mean        -0.59 0.09
+## SE_mean        -0.68 0.09
+## G_mean         -1.09 0.10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Korrelationen}
+\FunctionTok{library}\NormalTok{(ggcorrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Lade nötiges Paket: ggplot2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attache Paket: 'ggplot2'
+\end{verbatim}
+
+\begin{verbatim}
+## Die folgenden Objekte sind maskiert von 'package:psych':
+## 
+##     %+%, alpha
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cor\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(skalen, }\AttributeTok{use =} \StringTok{"pairwise.complete.obs"}\NormalTok{)}
+\FunctionTok{ggcorrplot}\NormalTok{(cor\_matrix, }\AttributeTok{lab =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{type =} \StringTok{"lower"}\NormalTok{, }\AttributeTok{colors =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"white"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-6-1.pdf}}
+
+\section{6. Regressionen}\label{regressionen}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_va }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(VA\_mean }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LE\_mean }\SpecialCharTok{+}\NormalTok{ AE\_mean }\SpecialCharTok{+}\NormalTok{ EB\_mean }\SpecialCharTok{+}\NormalTok{ HM\_mean }\SpecialCharTok{+}\NormalTok{ SE\_mean }\SpecialCharTok{+}\NormalTok{ G\_mean, }\AttributeTok{data =}\NormalTok{ data\_clean)}
+\FunctionTok{summary}\NormalTok{(model\_va)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = VA_mean ~ LE_mean + AE_mean + EB_mean + HM_mean + 
+##     SE_mean + G_mean, data = data_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.6075 -0.3922 -0.0166  0.4327  1.3491 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.43711    0.37829  -1.155  0.25037    
+## LE_mean      0.06458    0.10241   0.631  0.52960    
+## AE_mean      0.05842    0.10189   0.573  0.56754    
+## EB_mean      0.14098    0.09546   1.477  0.14255    
+## HM_mean      0.28452    0.09729   2.924  0.00419 ** 
+## SE_mean      0.09671    0.07887   1.226  0.22273    
+## G_mean       0.49701    0.06673   7.448 2.19e-11 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.6406 on 111 degrees of freedom
+## Multiple R-squared:  0.6838, Adjusted R-squared:  0.6667 
+## F-statistic: 40.01 on 6 and 111 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model\_nutzung }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Nutzung\_final }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LE\_mean }\SpecialCharTok{+}\NormalTok{ AE\_mean }\SpecialCharTok{+}\NormalTok{ EB\_mean }\SpecialCharTok{+}\NormalTok{ HM\_mean }\SpecialCharTok{+}\NormalTok{ SE\_mean }\SpecialCharTok{+}\NormalTok{ G\_mean }\SpecialCharTok{+}\NormalTok{ VA\_mean, }\AttributeTok{data =}\NormalTok{ data\_clean)}
+\FunctionTok{summary}\NormalTok{(model\_nutzung)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Nutzung_final ~ LE_mean + AE_mean + EB_mean + HM_mean + 
+##     SE_mean + G_mean + VA_mean, data = data_clean)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.34119 -0.50624  0.02857  0.35218  1.66883 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  0.92179    0.40171   2.295 0.023703 *  
+## LE_mean      0.04444    0.10727   0.414 0.679503    
+## AE_mean      0.05898    0.10618   0.555 0.579735    
+## EB_mean      0.07778    0.10254   0.759 0.449807    
+## HM_mean     -0.19488    0.10544  -1.848 0.067317 .  
+## SE_mean      0.07652    0.08271   0.925 0.356972    
+## G_mean       0.14414    0.08475   1.701 0.091867 .  
+## VA_mean      0.36745    0.09875   3.721 0.000318 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.6623 on 107 degrees of freedom
+##   (3 Beobachtungen als fehlend gelöscht)
+## Multiple R-squared:  0.4176, Adjusted R-squared:  0.3795 
+## F-statistic: 10.96 on 7 and 107 DF,  p-value: 2.251e-10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{step}\NormalTok{(model\_va)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-98.31
+## VA_mean ~ LE_mean + AE_mean + EB_mean + HM_mean + SE_mean + G_mean
+## 
+##           Df Sum of Sq    RSS     AIC
+## - AE_mean  1    0.1349 45.691 -99.956
+## - LE_mean  1    0.1632 45.719 -99.883
+## - SE_mean  1    0.6171 46.173 -98.718
+## <none>                 45.556 -98.305
+## - EB_mean  1    0.8951 46.451 -98.009
+## - HM_mean  1    3.5099 49.066 -91.547
+## - G_mean   1   22.7667 68.323 -52.480
+## 
+## Step:  AIC=-99.96
+## VA_mean ~ LE_mean + EB_mean + HM_mean + SE_mean + G_mean
+## 
+##           Df Sum of Sq    RSS      AIC
+## - LE_mean  1    0.2499 45.941 -101.313
+## - SE_mean  1    0.7155 46.407 -100.123
+## <none>                 45.691  -99.956
+## - EB_mean  1    1.5124 47.203  -98.114
+## - HM_mean  1    3.5621 49.253  -93.098
+## - G_mean   1   22.9847 68.676  -53.872
+## 
+## Step:  AIC=-101.31
+## VA_mean ~ EB_mean + HM_mean + SE_mean + G_mean
+## 
+##           Df Sum of Sq    RSS      AIC
+## <none>                 45.941 -101.313
+## - SE_mean  1    0.8579 46.799 -101.129
+## - EB_mean  1    1.5027 47.444  -99.515
+## - HM_mean  1    8.6392 54.580  -82.980
+## - G_mean   1   25.0430 70.984  -51.971
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = VA_mean ~ EB_mean + HM_mean + SE_mean + G_mean, 
+##     data = data_clean)
+## 
+## Coefficients:
+## (Intercept)      EB_mean      HM_mean      SE_mean       G_mean  
+##     -0.3510       0.1643       0.3363       0.1117       0.5095
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{step}\NormalTok{(model\_nutzung)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-87.05
+## Nutzung_final ~ LE_mean + AE_mean + EB_mean + HM_mean + SE_mean + 
+##     G_mean + VA_mean
+## 
+##           Df Sum of Sq    RSS     AIC
+## - LE_mean  1    0.0753 47.014 -88.866
+## - AE_mean  1    0.1354 47.074 -88.719
+## - EB_mean  1    0.2524 47.191 -88.434
+## - SE_mean  1    0.3755 47.314 -88.134
+## <none>                 46.939 -87.051
+## - G_mean   1    1.2691 48.208 -85.982
+## - HM_mean  1    1.4987 48.437 -85.436
+## - VA_mean  1    6.0745 53.013 -75.055
+## 
+## Step:  AIC=-88.87
+## Nutzung_final ~ AE_mean + EB_mean + HM_mean + SE_mean + G_mean + 
+##     VA_mean
+## 
+##           Df Sum of Sq    RSS     AIC
+## - AE_mean  1    0.1933 47.207 -90.394
+## - EB_mean  1    0.2238 47.238 -90.320
+## - SE_mean  1    0.4141 47.428 -89.858
+## <none>                 47.014 -88.866
+## - G_mean   1    1.3715 48.385 -87.559
+## - HM_mean  1    1.7535 48.767 -86.655
+## - VA_mean  1    6.1791 53.193 -76.666
+## 
+## Step:  AIC=-90.39
+## Nutzung_final ~ EB_mean + HM_mean + SE_mean + G_mean + VA_mean
+## 
+##           Df Sum of Sq    RSS     AIC
+## - EB_mean  1    0.5030 47.710 -91.175
+## - SE_mean  1    0.5303 47.738 -91.110
+## <none>                 47.207 -90.394
+## - G_mean   1    1.4080 48.615 -89.014
+## - HM_mean  1    1.5947 48.802 -88.574
+## - VA_mean  1    6.3284 53.536 -77.927
+## 
+## Step:  AIC=-91.18
+## Nutzung_final ~ HM_mean + SE_mean + G_mean + VA_mean
+## 
+##           Df Sum of Sq    RSS     AIC
+## - SE_mean  1    0.5212 48.231 -91.926
+## <none>                 47.710 -91.175
+## - G_mean   1    1.4752 49.185 -89.674
+## - HM_mean  1    1.6309 49.341 -89.310
+## - VA_mean  1    7.2566 54.967 -76.893
+## 
+## Step:  AIC=-91.93
+## Nutzung_final ~ HM_mean + G_mean + VA_mean
+## 
+##           Df Sum of Sq    RSS     AIC
+## <none>                 48.231 -91.926
+## - HM_mean  1    1.2467 49.478 -90.991
+## - G_mean   1    1.8183 50.050 -89.670
+## - VA_mean  1    7.9512 56.183 -76.377
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Nutzung_final ~ HM_mean + G_mean + VA_mean, data = data_clean)
+## 
+## Coefficients:
+## (Intercept)      HM_mean       G_mean      VA_mean  
+##      1.4330      -0.1336       0.1687       0.4078
+\end{verbatim}
+
+\section{7. Demografie +
+Gruppenvergleiche}\label{demografie-gruppenvergleiche}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Geschlecht als Faktor}
+\NormalTok{data\_clean}\SpecialCharTok{$}\NormalTok{Geschlecht }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(data\_clean}\SpecialCharTok{$}\NormalTok{SD01, }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"weiblich"}\NormalTok{, }\StringTok{"männlich"}\NormalTok{, }\StringTok{"divers"}\NormalTok{))}
+
+\CommentTok{\# ANOVA: Geschlecht → VA}
+\NormalTok{anova\_geschlecht }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(VA\_mean }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Geschlecht, }\AttributeTok{data =}\NormalTok{ data\_clean)}
+\FunctionTok{summary}\NormalTok{(anova\_geschlecht)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Df Sum Sq Mean Sq F value Pr(>F)  
+## Geschlecht    2   8.53   4.267   3.686 0.0281 *
+## Residuals   114 131.97   1.158                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 1 Beobachtung als fehlend gelöscht
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{TukeyHSD}\NormalTok{(anova\_geschlecht)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = VA_mean ~ Geschlecht, data = data_clean)
+## 
+## $Geschlecht
+##                         diff        lwr        upr     p adj
+## männlich-weiblich  0.1031667 -0.3843809  0.5907143 0.8702558
+## divers-weiblich   -1.0693400 -2.0926320 -0.0460480 0.0383526
+## divers-männlich   -1.1725067 -2.2000136 -0.1449999 0.0210580
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ANOVA: Bildung → Nutzung}
+\NormalTok{anova\_bildung }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(Nutzung\_final }\SpecialCharTok{\textasciitilde{}} \FunctionTok{as.factor}\NormalTok{(SD04), }\AttributeTok{data =}\NormalTok{ data\_clean)}
+\FunctionTok{summary}\NormalTok{(anova\_bildung)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  Df Sum Sq Mean Sq F value Pr(>F)
+## as.factor(SD04)   5   2.52  0.5038   0.697  0.627
+## Residuals       108  78.06  0.7228               
+## 4 Beobachtungen als fehlend gelöscht
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{TukeyHSD}\NormalTok{(anova\_bildung)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = Nutzung_final ~ as.factor(SD04), data = data_clean)
+## 
+## $`as.factor(SD04)`
+##              diff        lwr       upr     p adj
+## 7-1    0.27460317 -0.5147062 1.0639125 0.9138796
+## 9-1    0.23888889 -1.1492689 1.6270467 0.9961029
+## 10-1   0.43986928 -0.3247595 1.2044980 0.5550083
+## 12-1   0.08148148 -0.9586216 1.1215846 0.9999147
+## 13-1   0.35000000 -0.4619302 1.1619302 0.8106433
+## 9-7   -0.03571429 -1.3542857 1.2828571 0.9999996
+## 10-7   0.16526611 -0.4642619 0.7947941 0.9732611
+## 12-7  -0.19312169 -1.1383533 0.7521100 0.9913247
+## 13-7   0.07539683 -0.6108095 0.7616031 0.9995500
+## 10-9   0.20098039 -1.1029668 1.5049276 0.9976899
+## 12-9  -0.15740741 -1.6397824 1.3249676 0.9996192
+## 13-9   0.11111111 -1.2211246 1.4433468 0.9998838
+## 12-10 -0.35838780 -1.2831098 0.5663342 0.8701937
+## 13-10 -0.08986928 -0.7475371 0.5677985 0.9987033
+## 13-12  0.26851852 -0.6956829 1.2327199 0.9654926
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Regression mit demografischen Variablen}
+\NormalTok{model\_va\_demo }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(VA\_mean }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LE\_mean }\SpecialCharTok{+}\NormalTok{ AE\_mean }\SpecialCharTok{+}\NormalTok{ EB\_mean }\SpecialCharTok{+}\NormalTok{ HM\_mean }\SpecialCharTok{+}\NormalTok{ SE\_mean }\SpecialCharTok{+}\NormalTok{ G\_mean }\SpecialCharTok{+}
+\NormalTok{                    SD01 }\SpecialCharTok{+}\NormalTok{ SD02\_01 }\SpecialCharTok{+} \FunctionTok{as.factor}\NormalTok{(SD04), }\AttributeTok{data =}\NormalTok{ data\_clean)}
+\FunctionTok{summary}\NormalTok{(model\_va\_demo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = VA_mean ~ LE_mean + AE_mean + EB_mean + HM_mean + 
+##     SE_mean + G_mean + SD01 + SD02_01 + as.factor(SD04), data = data_clean)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.65768 -0.39922 -0.01549  0.45069  1.36925 
+## 
+## Coefficients:
+##                    Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)       -1.136501   0.490759  -2.316  0.02257 *  
+## LE_mean            0.141591   0.102885   1.376  0.17177    
+## AE_mean            0.166196   0.108109   1.537  0.12732    
+## EB_mean            0.156511   0.093868   1.667  0.09851 .  
+## HM_mean            0.292315   0.099344   2.942  0.00403 ** 
+## SE_mean            0.070447   0.078199   0.901  0.36978    
+## G_mean             0.397851   0.071166   5.590  1.9e-07 ***
+## SD01              -0.063717   0.103848  -0.614  0.54087    
+## SD02_01            0.017605   0.005313   3.314  0.00127 ** 
+## as.factor(SD04)7  -0.073487   0.231576  -0.317  0.75164    
+## as.factor(SD04)9  -0.065226   0.373919  -0.174  0.86187    
+## as.factor(SD04)10 -0.138558   0.208874  -0.663  0.50860    
+## as.factor(SD04)12 -0.289602   0.270932  -1.069  0.28763    
+## as.factor(SD04)13  0.053632   0.221980   0.242  0.80957    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.6165 on 102 degrees of freedom
+##   (2 Beobachtungen als fehlend gelöscht)
+## Multiple R-squared:  0.7241, Adjusted R-squared:  0.6889 
+## F-statistic: 20.59 on 13 and 102 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\section{8. Grafiken}\label{grafiken}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Balkendiagramm der Regressionskoeffizienten (Modell Va)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(broom)}
+
+\CommentTok{\# Modell tidy machen}
+\NormalTok{coeffs\_va }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(model\_va)}
+
+\CommentTok{\# Nur Prädiktoren anzeigen, Intercept ausfiltern}
+\NormalTok{coeffs\_va }\OtherTok{\textless{}{-}}\NormalTok{ coeffs\_va[coeffs\_va}\SpecialCharTok{$}\NormalTok{term }\SpecialCharTok{!=} \StringTok{"(Intercept)"}\NormalTok{, ]}
+
+\CommentTok{\# Plot}
+\FunctionTok{ggplot}\NormalTok{(coeffs\_va, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(term, estimate), }\AttributeTok{y =}\NormalTok{ estimate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ estimate }\SpecialCharTok{{-}}\NormalTok{ std.error, }\AttributeTok{ymax =}\NormalTok{ estimate }\SpecialCharTok{+}\NormalTok{ std.error), }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Einflussfaktoren auf Verhaltensabsicht"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Prädiktoren"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Regressionskoeffizient"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-10-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Balkendiagramm der Prädiktoren für Nutzung (Modell Nutzung)}
+
+\NormalTok{coeffs\_nutzung }\OtherTok{\textless{}{-}} \FunctionTok{tidy}\NormalTok{(model\_nutzung)}
+\NormalTok{coeffs\_nutzung }\OtherTok{\textless{}{-}}\NormalTok{ coeffs\_nutzung[coeffs\_nutzung}\SpecialCharTok{$}\NormalTok{term }\SpecialCharTok{!=} \StringTok{"(Intercept)"}\NormalTok{, ]}
+
+\FunctionTok{ggplot}\NormalTok{(coeffs\_nutzung, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(term, estimate), }\AttributeTok{y =}\NormalTok{ estimate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"seagreen"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_errorbar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ estimate }\SpecialCharTok{{-}}\NormalTok{ std.error, }\AttributeTok{ymax =}\NormalTok{ estimate }\SpecialCharTok{+}\NormalTok{ std.error), }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{coord\_flip}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Einflussfaktoren auf Nutzung"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Prädiktoren"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Regressionskoeffizient"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-11-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Streudiagramm mit Regressionslinie für H5 (VA → Nutzungshäufigkeit)}
+
+\FunctionTok{ggplot}\NormalTok{(data\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ VA\_mean, }\AttributeTok{y =}\NormalTok{ N\_freq\_mean)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{color =} \StringTok{"darkred"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Zusammenhang zwischen Verhaltensabsicht und Nutzung"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Verhaltensabsicht (VA\_mean)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Nutzungshäufigkeit (N\_freq\_mean)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-12-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Streudiagramm mit Regressionslinie für H5 (VA → generelle Nutzung)}
+
+\FunctionTok{ggplot}\NormalTok{(data\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ VA\_mean, }\AttributeTok{y =}\NormalTok{ N\_used\_prop)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{color =} \StringTok{"darkred"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Zusammenhang zwischen Verhaltensabsicht und Nutzung"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Verhaltensabsicht (VA\_mean)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"generelle Nutzung (N\_used\_prop)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-12-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Grafische Darstellung von VA\_mean}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(data\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Geschlecht, }\AttributeTok{y =}\NormalTok{ VA\_mean, }\AttributeTok{fill =}\NormalTok{ Geschlecht)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Verhaltensabsicht nach Geschlecht"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Geschlecht"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Verhaltensabsicht (VA\_mean)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-13-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Grafische Darstellung von Nutzung}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(data\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Geschlecht, }\AttributeTok{y =}\NormalTok{ N\_freq\_mean, }\AttributeTok{fill =}\NormalTok{ Geschlecht)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Nutzung nach Geschlecht"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Geschlecht"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Nutzungshäufigkeit)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-14-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(data\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Geschlecht, }\AttributeTok{y =}\NormalTok{ N\_used\_prop, }\AttributeTok{fill =}\NormalTok{ Geschlecht)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Nutzung nach Geschlecht"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Geschlecht"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Nutzung"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-14-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(data\_clean, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Geschlecht, }\AttributeTok{y =}\NormalTok{ Nutzung\_final, }\AttributeTok{fill =}\NormalTok{ Geschlecht)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Nutzung nach Geschlecht"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Geschlecht"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Nutzung\_final"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 3 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 3 rows containing missing values or values outside the scale range
+## (`geom_point()`).
+\end{verbatim}
+
+\pandocbounded{\includegraphics[keepaspectratio]{Überarbeitete-Auswertung_files/figure-latex/unnamed-chunk-14-3.pdf}}
+
+\end{document}
